@@ -16,7 +16,7 @@ public class Item {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @OneToOne(mappedBy = "item")
+  @OneToOne()
   private Product product;
 
   private Long amount;
