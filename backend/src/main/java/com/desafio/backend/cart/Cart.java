@@ -21,4 +21,8 @@ public class Cart {
 
   @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Item> item;
+
+  public List<Item> getItems() {
+    return this.item;
+  }
 }

@@ -12,11 +12,11 @@ import java.util.List;
 @RequestMapping("/items")
 public class ItemController {
 
-//    @Autowired
-//    private ItemService itemService;
-//
-//    @PostMapping
-//    public Item addItemInTheCard(@RequestBody Item item){
-//        return ItemService.AddItemCard();
-//    }
+    @Autowired
+    private ItemService itemService;
+
+    @PostMapping
+    public Item addItemInTheCard(@RequestBody Item item){
+        return itemService.addItemToCart(item);
+    }
 }
