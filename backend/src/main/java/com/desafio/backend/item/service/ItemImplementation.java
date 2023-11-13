@@ -13,9 +13,9 @@ public class ItemImplementation implements ItemService {
     private CartRepository cartRepository;
 
     @Override
-    public Item addItemToCart(Item item) {
+    public Item addItemToCart(Long cartId, Item item) {
 
-        Cart cart = cartRepository.findById(1L).orElse(new Cart());
+        Cart cart = cartRepository.findById(cartId).orElse(new Cart());
 
         boolean itemExists = false;
         for (Item cartItem : cart.getItems()) {

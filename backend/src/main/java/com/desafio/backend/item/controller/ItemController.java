@@ -16,7 +16,7 @@ public class ItemController {
     private ItemService itemService;
 
     @PostMapping
-    public Item addItemInTheCard(@RequestBody Item item){
-        return itemService.addItemToCart(item);
+    public Item addItemInTheCard(@RequestBody Long cartId, Item item){
+        return itemService.addItemToCart(cartId ,item);
     }
 }
