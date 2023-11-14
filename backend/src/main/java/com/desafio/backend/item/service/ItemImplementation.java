@@ -3,38 +3,41 @@ package com.desafio.backend.item.service;
 import com.desafio.backend.item.Item;
 import com.desafio.backend.cart.Cart;
 import com.desafio.backend.cart.Service.CartRepository;
+import com.desafio.backend.product.Product;
+import com.desafio.backend.product.Service.ProductReposity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ItemImplementation implements ItemService {
 
+
+    @Autowired
+    private ItemRepository itemRepository;
+
     @Autowired
     private CartRepository cartRepository;
 
+    @Autowired
+    private ProductReposity productRepository;
+
     @Override
-    public Item addItemToCart(Long cartId, Item item) {
+    public Item addItemToCart(Long cartId, long productId, long amount) {
 
-        Cart cart = cartRepository.findById(cartId).orElse(new Cart());
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado com o ID: " + productId));
 
-        boolean itemExists = false;
-        for (Item cartItem : cart.getItems()) {
-            if (cartItem.getProduct().getId().equals(item.getProduct().getId())) {
+        Cart cart = cartId != null ? cartRepository.findById(cartId).orElse(new Cart()) : new Cart();
 
-                cartItem.setAmount(cartItem.getAmount() + item.getAmount());
-                itemExists = true;
-                break;
-            }
-        }
+        Item item = new Item();
+        item.setProduct(product);
+        item.setAmount(amount);
 
-        if (!itemExists) {
-            cart.getItems().add(item);
-        }
+        itemRepository.save(item);
 
+        cart.getItem().add(item);
         cartRepository.save(cart);
 
         return item;
     }
 }
-
-

@@ -1,6 +1,7 @@
 package com.desafio.backend.item.controller;
 
 import com.desafio.backend.item.Item;
+import com.desafio.backend.item.service.ItemRequest;
 import com.desafio.backend.item.service.ItemService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,10 @@ public class ItemController {
     private ItemService itemService;
 
     @PostMapping
-    public Item addItemInTheCard(@RequestBody Long cartId, Item item){
-        return itemService.addItemToCart(cartId ,item);
+    public Item addItemInTheCard(@RequestBody ItemRequest itemRequest){
+        return itemService.addItemToCart(
+                itemRequest.getCartId(),
+                itemRequest.getProductId(),
+                itemRequest.getAmount());
     }
 }

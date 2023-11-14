@@ -1,5 +1,6 @@
 package com.desafio.backend.cart;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.desafio.backend.item.Item;
@@ -22,7 +23,8 @@ public class Cart {
   @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Item> item;
 
-  public List<Item> getItems() {
-    return this.item;
+  public Cart(){
+    this.item = new ArrayList<>();
   }
+
 }
