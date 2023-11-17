@@ -1,4 +1,24 @@
-<h1>hello word</h1>
+<div ng-controller="View1Ctrl">
 
-
-
+    <div class="formulario" >
+        <form ng-submit="adicionarNovoProduto()">
+            <label for="nome">Nome:</label>
+            <input type="text" id="name" ng-model="novoProduto.name" required>
+        
+            <label for="preco">Preço:</label>
+            <input type="text" id="price" ng-model="novoProduto.price" required>
+        
+            <button type="submit">Adicionar Novo Produto</button>
+        </form>
+    </div>
+  
+    <div class="produto-container">
+      <div class="produto-card" ng-repeat="produto in produtos">
+        <h3>{{ produto.name }}</h3>
+        <p>R$ {{ produto.price }}</p>
+        <button class="adicionar-ao-carrinho" ng-click="adicionarAoCarrinho(produto.id)">Adicionar ao Carrinho</button>
+        <button class="exluirProduto" ng-click="excluirProduto(produto.id)">Excluri produto</button>            
+      </div>
+    </div>
+</div>
+  
