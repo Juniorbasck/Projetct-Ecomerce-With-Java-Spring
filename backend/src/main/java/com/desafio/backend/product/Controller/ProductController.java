@@ -15,21 +15,25 @@ public class ProductController {
     @Autowired
     private ProductReposity productService;
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
     public List<Product> getAllProducts() {
         return productService.findAll();
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/{id}")
     public Optional<Product> getProductById(@PathVariable Long id) {
         return productService.findById(id);
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
     public Product createProduct(@RequestBody Product product) {
         return productService.save(product);
     }
-    
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable Long id) {
         productService.deleteById(id);

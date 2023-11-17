@@ -16,6 +16,7 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
     public Item addItemInTheCard(@RequestBody ItemRequest itemRequest){
         return itemService.addItemToCart(

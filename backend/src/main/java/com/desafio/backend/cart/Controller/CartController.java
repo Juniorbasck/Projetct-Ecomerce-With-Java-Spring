@@ -27,12 +27,15 @@ public class CartController {
     @Autowired
     private ProductReposity productReposity;
 
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/{cartId}")
     public Cart getTheCart(@PathVariable Long cartId) {
         return cartRepository.findCartById(cartId);
 
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping("/{cartId}/{productId}")
     public Cart deleteProduct(@PathVariable Long cartId, @PathVariable Long productId) {
         Cart cart = cartRepository.findById(cartId).orElse(null);
@@ -45,6 +48,7 @@ public class CartController {
         }
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PutMapping("/{cartId}")
     public Cart updateCartItem(@PathVariable Long cartId, @RequestBody CartUpdateReques request){
 
