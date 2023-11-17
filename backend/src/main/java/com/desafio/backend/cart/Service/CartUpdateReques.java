@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class CartUpdateReques {
-
     private Long productId;
     private Long amount;
+    private Long originalAmount;
 }

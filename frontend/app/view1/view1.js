@@ -60,4 +60,23 @@ angular.module('myApp.view1', ['ngRoute'])
               console.error('Erro ao excluir produto', error);
           });
      };
+
+     $scope.adicionarAoCarrinho = function(produtoId) {
+      var cartId = 2;
+  
+      var itemRequest = {
+          productId: produtoId,
+          amount: 1
+      };
+  
+      console.log(cartId, itemRequest.productId, itemRequest.amount);
+  
+      $http.post('http://localhost:8080/items/' + cartId, itemRequest)
+          .then(function(response) {
+              console.log('Item adicionado ao carrinho com sucesso:', response.data);
+          })
+          .catch(function(error) {
+              console.error('Erro ao adicionar item ao carrinho', error);
+          });
+      };
 }]);

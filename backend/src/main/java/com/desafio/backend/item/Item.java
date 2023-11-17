@@ -12,7 +12,7 @@ public class Item {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+  @ManyToOne(cascade = CascadeType.ALL)
   private Product product;
 
   private Long amount;

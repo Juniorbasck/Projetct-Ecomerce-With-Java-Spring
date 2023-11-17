@@ -50,26 +50,22 @@ public class CartController {
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PutMapping("/{cartId}")
-    public Cart updateCartItem(@PathVariable Long cartId, @RequestBody CartUpdateReques request){
+    public Cart updateCartItems(@PathVariable Long cartId, @RequestBody List<CartUpdateReques> requests) {
 
-        Cart cart = cartRepository.findById(cartId).orElse(null);
+        Cart cart = cartRepository.findById(cartId).orElseThrow(() -> new RuntimeException("Carrinho não encontrado com o ID: " + cartId));
 
-        if (cart != null) {
+        for (CartUpdateReques request : requests) {
+            Long productId = request.getProductId();
+            Long amount = request.getAmount();
+
             for (Item item : cart.getItem()) {
-                if (item.getProduct().getId().equals(request.getProductId())) {
-
-                    Product product = productReposity.findById(request.getProductId())
-                            .orElseThrow(() -> new RuntimeException("Produto não encontrado com o ID: " + request.getProductId()));
-
-                    item.setProduct(product);
-                    item.setAmount(request.getAmount());
+                if (item.getProduct().getId().equals(productId)) {
+                    item.setAmount(amount);
                     break;
                 }
             }
-            return cartRepository.save(cart);
-        } else {
-            return null;
         }
+        return cartRepository.save(cart);
     }
 }
 

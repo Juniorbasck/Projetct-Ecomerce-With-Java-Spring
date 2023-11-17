@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ItemService {
 
-    Item addItemToCart(Long cartId, long productId, long amount);
+    Item addItemToCart(long cartId, long productId, long amount);
 }

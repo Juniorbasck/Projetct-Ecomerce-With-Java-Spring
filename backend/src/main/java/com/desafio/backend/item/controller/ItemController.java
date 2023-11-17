@@ -17,10 +17,10 @@ public class ItemController {
     private ItemService itemService;
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @PostMapping
-    public Item addItemInTheCard(@RequestBody ItemRequest itemRequest){
+    @PostMapping("/{cartId}")
+    public Item addItemInTheCard(@PathVariable long cartId, @RequestBody ItemRequest itemRequest){
         return itemService.addItemToCart(
-                itemRequest.getCartId(),
+                cartId,
                 itemRequest.getProductId(),
                 itemRequest.getAmount());
     }

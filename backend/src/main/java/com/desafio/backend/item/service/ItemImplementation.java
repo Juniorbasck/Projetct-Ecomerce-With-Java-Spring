@@ -5,10 +5,12 @@ import com.desafio.backend.cart.Cart;
 import com.desafio.backend.cart.Service.CartRepository;
 import com.desafio.backend.product.Product;
 import com.desafio.backend.product.Service.ProductReposity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class ItemImplementation implements ItemService {
 
 
@@ -22,21 +24,21 @@ public class ItemImplementation implements ItemService {
     private ProductReposity productRepository;
 
     @Override
-    public Item addItemToCart(Long cartId, long productId, long amount) {
+    public Item addItemToCart(long cartId, long productId, long amount) {
 
-        Product product = productRepository.findById(productId)
+        Product product = this.productRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado com o ID: " + productId));
 
-        Cart cart = cartId != null ? cartRepository.findById(cartId).orElse(new Cart()) : new Cart();
+        Cart cart = this.cartRepository.findById(cartId).orElse(new Cart());
 
         Item item = new Item();
         item.setProduct(product);
         item.setAmount(amount);
 
-        itemRepository.save(item);
+        this.itemRepository.save(item);
 
         cart.getItem().add(item);
-        cartRepository.save(cart);
+        this.cartRepository.save(cart);
 
         return item;
     }
