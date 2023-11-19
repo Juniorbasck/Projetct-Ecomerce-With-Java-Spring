@@ -57,10 +57,12 @@ angular.module('myApp.view2')
         });
     };
     
-    $scope.removerDoCarrinho = function(productId) {
-      var cartId = 2;
-  
-      $http.delete('http://localhost:8080/cart/' + cartId + '/' + productId)
+
+    
+    $scope.removerDoCarrinho = function(itemId) {
+      var cartId = 2
+
+      $http.delete('http://localhost:8080/cart/' + cartId + '/' + itemId)
           .then(function(response) {
               console.log('Produto removido do carrinho com sucesso:', response.data);
           })

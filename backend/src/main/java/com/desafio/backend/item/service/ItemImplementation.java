@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class ItemImplementation implements ItemService {
@@ -26,6 +28,15 @@ public class ItemImplementation implements ItemService {
     @Override
     public Item addItemToCart(long cartId, long productId, long amount) {
 
+        Optional<Cart> optionalCart = this.cartRepository.findById(cartId);
+        if (((Optional<?>) optionalCart).isPresent()) {
+            Cart cart = optionalCart.get();
+            for (Item existingItem : cart.getItem()) {
+                if (existingItem.getProduct().getId().equals(productId)) {
+                    throw new RuntimeException("Produto já existe no carrinho");
+                }
+            }
+        }
         Product product = this.productRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado com o ID: " + productId));
 

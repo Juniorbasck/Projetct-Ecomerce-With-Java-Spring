@@ -7,9 +7,7 @@
     <p>Quantidade: {{ item.amount }}</p>
     <button class="amount" ng-click="diminuirQuantidade(item)">-</button>
     <button class="amount" ng-click="aumentarQuantidade(item)">+</button>
-    <button class="deleteButton" ng-click="removerDoCarrinho(item.product.id)">Delete</button>
+    <button class="deleteButton" ng-click="removerDoCarrinho(item.id)">Delete</button>
   </div>
-
   <button class="atualizarButton" ng-click="atualizarCarrinho()">Atualizar Carrinho</button>
-
 </div>
