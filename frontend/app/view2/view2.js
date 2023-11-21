@@ -65,9 +65,13 @@ angular.module('myApp.view2')
       $http.delete('http://localhost:8080/cart/' + cartId + '/' + itemId)
           .then(function(response) {
               console.log('Produto removido do carrinho com sucesso:', response.data);
+
+              $scope.mensagemDoServidor = 'Produto excluído com sucesso, recarregue a pagina';
           })
           .catch(function(error) {
               console.error('Erro ao remover produto do carrinho', error);
+
+              $scope.mensagemDoServidor = 'Erro ao remover produto do carrinho';
           });
       };
 }]);

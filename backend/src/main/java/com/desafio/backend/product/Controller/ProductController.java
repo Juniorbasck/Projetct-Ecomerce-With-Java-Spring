@@ -1,5 +1,6 @@
 package com.desafio.backend.product.Controller;
 
+import com.desafio.backend.cart.Service.CartRepository;
 import com.desafio.backend.product.Product;
 import com.desafio.backend.product.Service.ProductReposity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ public class ProductController {
     
     @Autowired
     private ProductReposity productService;
+
+    @Autowired
+    private CartRepository cartRepository;
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping

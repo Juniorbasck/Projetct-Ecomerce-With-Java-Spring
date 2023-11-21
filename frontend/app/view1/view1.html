@@ -17,8 +17,12 @@
         <h3>{{ produto.name }}</h3>
         <p>R$ {{ produto.price }}</p>
         <button class="adicionar-ao-carrinho" ng-click="adicionarAoCarrinho(produto.id)">Adicionar ao Carrinho</button>
-        <button class="exluirProduto" ng-click="excluirProduto(produto.id)">Excluri produto</button>            
+        <button class="exluirProduto" ng-click="excluirProduto(produto.id)">Excluir</button>            
       </div>
+    </div>
+
+    <div ng-if="mensagemDoServidor" class="mensagem-flutuante">
+      {{ mensagemDoServidor }}
     </div>
 </div>
   

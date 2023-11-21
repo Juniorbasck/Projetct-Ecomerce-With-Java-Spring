@@ -1,13 +1,22 @@
-<div class="carrinho-container">
-  <h1>Meu Carrinho</h1>
 
-  <div class="produto-card" ng-repeat="item in carrinhoItens">
-    <h3>{{ item.product.name }}</h3>
-    <p>R$ {{ item.product.price }}</p>
-    <p>Quantidade: {{ item.amount }}</p>
-    <button class="amount" ng-click="diminuirQuantidade(item)">-</button>
-    <button class="amount" ng-click="aumentarQuantidade(item)">+</button>
-    <button class="deleteButton" ng-click="removerDoCarrinho(item.id)">Delete</button>
+<div class="container">
+  <h1>Meu Carrinho</h1>
+  <div class="carrinho-container">
+    
+      <div class="produto-card" ng-repeat="item in carrinhoItens">
+        <h3>{{ item.product.name }}</h3>
+        <p>R$ {{ item.product.price }}</p>
+        <p>Quantidade: {{ item.amount }}</p>
+        <button class="amount" ng-click="diminuirQuantidade(item)">-</button>
+        <button class="amount" ng-click="aumentarQuantidade(item)">+</button>
+        <button class="deleteButton" ng-click="removerDoCarrinho(item.id)">Delete</button>
+      </div>
+    </div>
+
+    <button class="atualizarButton" ng-click="atualizarCarrinho()">Atualizar Carrinho</button>
+
+    <div ng-if="mensagemDoServidor" class="mensagem-flutuante">
+      {{ mensagemDoServidor }}
+    </div>
   </div>
-  <button class="atualizarButton" ng-click="atualizarCarrinho()">Atualizar Carrinho</button>
 </div>

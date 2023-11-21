@@ -1,11 +1,11 @@
 /* app css stylesheet */
 
 .menu {
-  background-color: aqua;
+  background-color: rgb(20, 170, 170);
   list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
   padding: 0 0 0.5em;
+  border-radius: 35px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
 }
 
 .menu>li {
@@ -22,13 +22,13 @@
 .ProdutoHeader{
   margin-left: 750px;
   text-decoration: none;
-  color: black;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   transition: color 0.3s; 
 }
 
 .ProdutoHeader:hover {
-  color: rgb(199, 195, 191);
+  color: rgb(255, 255, 255);
 }
 
 .CarrinhoHeader{
@@ -40,7 +40,7 @@
 }
 
 .CarrinhoHeader:hover {
-  color: antiquewhite;
+  color: rgb(255, 255, 255);
 }
 
 .menu>li+li:before {
@@ -57,21 +57,25 @@
 .formulario form{
    padding: 10px;
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-   width: 800px;
+   width: 900px;
+   font-weight: bold;
 }
 
 .formulario input {
   margin-bottom: 16px;
   box-sizing: border-box;
   padding: 2px;
+  border: 1px solid black;
+  border-radius: 15px;
 }
 
 .formulario button {
+  margin-left: 4px;
   background-color: #45a049;
   color: white;
-  padding: 5px 7px;
+  padding: 10px;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -144,21 +148,24 @@ header {
   background-color: #740303;
 }
 
-/* pagina do carrinho */
-
 .carrinho-container {
-  max-width: 250px;
+  max-width: 80%;
   margin: 20px auto;
   padding: 20px;
   background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: baseline;
 }
 
 .produto-card {
-  margin-bottom: 20px;
+  margin-bottom: 0;
   padding: 10px;
   border: 1px solid #ddd;
   background-color: #fff;
+  width: calc(33.33% - 20px); 
+  box-sizing: border-box; 
 }
 
 h1 {
@@ -194,18 +201,30 @@ h1 {
 }
 
 .atualizarButton{
- margin-left: 40px;
- margin-top: 9px;
- padding: 5px; 
- width: 100px;
- height: 30px; 
+ padding: 20px; 
+ width: auto;
+ height: auto; 
  margin: auto;
- margin-bottom: 5px;
  border: none;
- border-radius: 4px;
+ border-radius: 8px;
  text-align: center;
  font-weight: bold;
  display: block;
  color:#fff;
  background-color: #333;
+}
+
+
+.mensagem-flutuante{
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  display: inline;
+  color:#333;
+  background-color: rgb(2, 175, 175);
+  padding: 10px;
+  border-radius: 7px;
+  font-weight: bold;
+  margin-right: 15px;
+  position: fixed;
+  top: 100px;
+  right: 20px;
 }

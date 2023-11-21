@@ -55,12 +55,18 @@ angular.module('myApp.view1', ['ngRoute'])
               $scope.produtos = $scope.produtos.filter(function(produto) {
                   return produto.id !== id;
               });
+
+              $scope.mensagemDoServidor = 'Produto excluído com sucesso';
+              
           })
           .catch(function(error) {
-              console.error('Erro ao excluir produto', error);
+            console.error('Erro ao excluir produto', error);
+
+            $scope.mensagemDoServidor = 'Erro ao excluir produto.';
+
           });
      };
-
+   
      $scope.adicionarAoCarrinho = function(produtoId) {
       var cartId = 2;
   
@@ -74,6 +80,8 @@ angular.module('myApp.view1', ['ngRoute'])
       $http.post('http://localhost:8080/items/' + cartId, itemRequest)
           .then(function(response) {
               console.log('Item adicionado ao carrinho com sucesso:', response.data);
+
+              $scope.mensagemDoServidor = 'produto adcionado do carrinho';
           })
           .catch(function(error) {
               console.error('Erro ao adicionar item ao carrinho', error);
