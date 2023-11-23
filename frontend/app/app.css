@@ -153,7 +153,7 @@ header {
   margin: 20px auto;
   padding: 20px;
   background-color: #fff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-wrap: wrap;
   justify-content: baseline;
@@ -214,9 +214,13 @@ h1 {
  background-color: #333;
 }
 
+.atualizarButton:hover{
+  background-color: #6b6b6b;
+}
+
 
 .mensagem-flutuante{
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   display: inline;
   color:#333;
   background-color: rgb(2, 175, 175);

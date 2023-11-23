@@ -38,8 +38,8 @@ public class ProductController {
     }
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable Long id) {
-        productService.deleteById(id);
-    }
+        @DeleteMapping("/{id}")
+        public void deleteProduct(@PathVariable Long id) {
+            productService.deleteById(id);
+        }
 }
