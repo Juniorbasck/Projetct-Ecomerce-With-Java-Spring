@@ -1,9 +1,7 @@
 package com.desafio.backend.product;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.desafio.backend.product.Enums.PromotionEnum;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -16,4 +14,7 @@ public class Product {
   private Long price;
 
   private String name;
+
+  @Column(nullable = true)
+  private PromotionEnum promotion;
 }
