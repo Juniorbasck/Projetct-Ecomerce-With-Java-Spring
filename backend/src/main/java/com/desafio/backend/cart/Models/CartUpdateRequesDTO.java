@@ -1,4 +1,4 @@
-package com.desafio.backend.cart.Service;
+package com.desafio.backend.cart.Models;
 
 import lombok.Data;
 

@@ -2,7 +2,7 @@ package com.desafio.backend.cart.Controller;
 
 import com.desafio.backend.cart.Cart;
 import com.desafio.backend.cart.Service.CartRepository;
-import com.desafio.backend.cart.Service.CartUpdateRequesDTO;
+import com.desafio.backend.cart.Models.CartUpdateRequesDTO;
 import com.desafio.backend.item.Item;
 import com.desafio.backend.item.repository.ItemRepository;
 import com.desafio.backend.product.Service.ProductReposity;
