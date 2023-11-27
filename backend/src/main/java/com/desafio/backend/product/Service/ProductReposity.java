@@ -8,5 +8,5 @@ import com.desafio.backend.product.Product;
 
 @Transactional
 public interface ProductReposity extends JpaRepository<Product, Long>{
- 
+    Product getProductById(Long id);
 }

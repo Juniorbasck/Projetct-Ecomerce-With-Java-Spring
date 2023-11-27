@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ItemImplementation implements ItemService {
+public class ItemWriteService implements ItemService {
 
 
     @Autowired

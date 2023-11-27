@@ -17,7 +17,7 @@ public class UserController {
     private UserReposity userReposity;
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @PostMapping
+    @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody Usuario user){
 
         Optional<Usuario> optionalUser = userReposity.findByEmail(user.getEmail());
