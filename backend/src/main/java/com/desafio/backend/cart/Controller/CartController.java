@@ -4,7 +4,7 @@ import com.desafio.backend.cart.Cart;
 import com.desafio.backend.cart.Service.CartRepository;
 import com.desafio.backend.cart.Service.CartUpdateRequesDTO;
 import com.desafio.backend.item.Item;
-import com.desafio.backend.item.service.ItemRepository;
+import com.desafio.backend.item.repository.ItemRepository;
 import com.desafio.backend.product.Service.ProductReposity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

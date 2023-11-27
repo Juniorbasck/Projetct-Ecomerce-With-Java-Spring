@@ -1,7 +1,6 @@
 package com.desafio.backend.product.Controller;
 
 import com.desafio.backend.cart.Service.CartRepository;
-import com.desafio.backend.product.Enums.PromotionEnum;
 import com.desafio.backend.product.Product;
 import com.desafio.backend.product.Service.ProductReposity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +18,6 @@ public class ProductController {
 
     @Autowired
     private CartRepository cartRepository;
-
-    @Autowired
-    private PromotionEnum promotionEnum;
-
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
@@ -57,7 +52,6 @@ public class ProductController {
         if(existingProduct != null){
             existingProduct.setName(product.getName());
             existingProduct.setPrice(product.getPrice());
-            existingProduct.setPromotion(product.getPromotion());
 
             return productService.save(existingProduct);
         }

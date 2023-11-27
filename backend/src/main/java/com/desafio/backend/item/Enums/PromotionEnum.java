@@ -1,4 +1,4 @@
-package com.desafio.backend.product.Enums;
+package com.desafio.backend.item.Enums;
 
 import lombok.Data;
 

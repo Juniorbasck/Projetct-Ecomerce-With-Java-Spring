@@ -1,8 +1,10 @@
 package com.desafio.backend.item.service;
 
+import com.desafio.backend.item.Enums.PromotionEnum;
 import com.desafio.backend.item.Item;
 import com.desafio.backend.cart.Cart;
 import com.desafio.backend.cart.Service.CartRepository;
+import com.desafio.backend.item.repository.ItemRepository;
 import com.desafio.backend.product.Product;
 import com.desafio.backend.product.Service.ProductReposity;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +28,7 @@ public class ItemWriteService implements ItemService {
     private ProductReposity productRepository;
 
     @Override
-    public Item addItemToCart(long cartId, long productId, long amount) {
+    public Item addItemToCart(long cartId, long productId, long amount, PromotionEnum promotion) {
 
         Optional<Cart> optionalCart = this.cartRepository.findById(cartId);
         if (((Optional<?>) optionalCart).isPresent()) {
@@ -37,6 +39,7 @@ public class ItemWriteService implements ItemService {
                 }
             }
         }
+
         Product product = this.productRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado com o ID: " + productId));
 
@@ -45,6 +48,7 @@ public class ItemWriteService implements ItemService {
         Item item = new Item();
         item.setProduct(product);
         item.setAmount(amount);
+        item.setPromotion(promotion);
 
         this.itemRepository.save(item);
 

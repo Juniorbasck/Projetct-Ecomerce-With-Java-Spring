@@ -1,6 +1,5 @@
 package com.desafio.backend.product;
 
-import com.desafio.backend.product.Enums.PromotionEnum;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,7 +13,4 @@ public class Product {
   private Long price;
 
   private String name;
-
-  @Column(nullable = true)
-  private PromotionEnum promotion;
 }

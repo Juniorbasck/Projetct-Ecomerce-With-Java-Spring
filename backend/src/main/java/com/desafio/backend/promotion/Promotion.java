@@ -1,4 +1,5 @@
 package com.desafio.backend.promotion;
 
-public class Promotion {
+public abstract class Promotion {
+    public abstract Long calculatePrice(Long regularPrice, Long amount);
 }
