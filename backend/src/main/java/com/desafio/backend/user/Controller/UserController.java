@@ -1,5 +1,7 @@
 package com.desafio.backend.user.Controller;
 
+import com.desafio.backend.user.Controller.Model.LoginModel;
+import com.desafio.backend.user.Controller.Model.UserInfoResponse;
 import com.desafio.backend.user.Services.UserReposity;
 import com.desafio.backend.user.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +20,21 @@ public class UserController {
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody Usuario user){
+    public ResponseEntity<String> login(@RequestBody LoginModel loginModel){
 
-        Optional<Usuario> optionalUser = userReposity.findByEmail(user.getEmail());
+        Optional<Usuario> optionalUser = userReposity.findByEmail(loginModel.getEmail());
 
-        if(optionalUser.isPresent() && optionalUser.get().getPassword().equals(user.getPassword())){
+        if(optionalUser.isPresent() && optionalUser.get().getPassword().equals(loginModel.getPassword())){
+
+            Usuario user = optionalUser.get();
+
+            UserInfoResponse userInfo = new UserInfoResponse();
+
+            userInfo.setId(user.getId());
+            userInfo.setName(user.getName());
+            userInfo.setEmail(user.getEmail());
+            userInfo.getIsAdmin(user.getIsAdmin());
+
             return ResponseEntity.ok("Usuário logado com sucesso");
         }else{
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas. Login falhou.");        }
