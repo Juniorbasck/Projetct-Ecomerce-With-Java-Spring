@@ -1,6 +1,6 @@
 package com.desafio.backend.item.service;
 
-import com.desafio.backend.item.Enums.PromotionEnum;
+import com.desafio.backend.product.Enums.PromotionEnum;
 import com.desafio.backend.item.Item;
 import com.desafio.backend.cart.Cart;
 import com.desafio.backend.cart.Service.CartRepository;
@@ -28,7 +28,7 @@ public class ItemWriteService implements ItemService {
     private ProductReposity productRepository;
 
     @Override
-    public Item addItemToCart(long cartId, long productId, long amount, PromotionEnum promotion) {
+    public Item addItemToCart(long cartId, long productId, long amount) {
 
         validations(cartId, productId);
 
@@ -36,7 +36,7 @@ public class ItemWriteService implements ItemService {
 
         Cart cart = FindCart(cartId);
 
-        Item item = SetValues(amount, promotion, product);
+        Item item = SetValues(amount, product);
 
         this.itemRepository.save(item);
         cart.getItem().add(item);
@@ -45,11 +45,10 @@ public class ItemWriteService implements ItemService {
         return item;
     }
 
-    private static Item SetValues(long amount, PromotionEnum promotion, Product product) {
+    private static Item SetValues(long amount, Product product) {
         Item item = new Item();
         item.setProduct(product);
         item.setAmount(amount);
-        item.setPromotion(promotion);
         return item;
     }
 

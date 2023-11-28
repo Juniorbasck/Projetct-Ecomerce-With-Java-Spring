@@ -1,8 +1,10 @@
 package com.desafio.backend.cart.Controller;
 
 import com.desafio.backend.cart.Cart;
+import com.desafio.backend.cart.Models.CartWithTotalPriceDTO;
 import com.desafio.backend.cart.Service.CartRepository;
 import com.desafio.backend.cart.Models.CartUpdateRequesDTO;
+import com.desafio.backend.cart.Service.CartWriteService;
 import com.desafio.backend.item.Item;
 import com.desafio.backend.item.repository.ItemRepository;
 import com.desafio.backend.product.Service.ProductReposity;
@@ -24,10 +26,15 @@ public class CartController {
     @Autowired
     private ProductReposity productReposity;
 
+    @Autowired
+    private CartWriteService cartWriteService;
+
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/{cartId}")
-    public Cart getTheCart(@PathVariable Long cartId) {
-        return cartRepository.findCartById(cartId);
+    public CartWithTotalPriceDTO getTheCart(@PathVariable Long cartId) {
+        Cart cart = cartRepository.findCartById(cartId);
+        Long totalPrice = cartWriteService.CalculateTotalPrice(cart);
+        return new CartWithTotalPriceDTO(cart, totalPrice);
     }
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")

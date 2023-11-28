@@ -20,7 +20,6 @@ public class ItemController {
         return itemService.addItemToCart(
                 cartId,
                 itemRequestDTO.getProductId(),
-                itemRequestDTO.getAmount(),
-                itemRequestDTO.getPromotion());
+                itemRequestDTO.getAmount());
     }
 }

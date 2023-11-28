@@ -52,6 +52,7 @@ public class ProductController {
         if(existingProduct != null){
             existingProduct.setName(product.getName());
             existingProduct.setPrice(product.getPrice());
+            existingProduct.setPromotion(product.getPromotion());
 
             return productService.save(existingProduct);
         }
