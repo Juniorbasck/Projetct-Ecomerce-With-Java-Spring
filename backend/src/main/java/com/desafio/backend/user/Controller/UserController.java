@@ -20,7 +20,7 @@ public class UserController {
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginModel loginModel){
+    public ResponseEntity<?> login(@RequestBody LoginModel loginModel){
 
         Optional<Usuario> optionalUser = userReposity.findByEmail(loginModel.getEmail());
 
@@ -33,9 +33,9 @@ public class UserController {
             userInfo.setId(user.getId());
             userInfo.setName(user.getName());
             userInfo.setEmail(user.getEmail());
-            userInfo.getIsAdmin(user.getIsAdmin());
+            userInfo.setIsAdmin(user.getIsAdmin());
 
-            return ResponseEntity.ok("Usuário logado com sucesso");
+            return ResponseEntity.ok(userInfo);
         }else{
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas. Login falhou.");        }
     }

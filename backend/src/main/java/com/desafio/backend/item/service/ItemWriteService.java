@@ -73,7 +73,7 @@ public class ItemWriteService implements ItemService {
             Cart cart = optionalCart.get();
             for (Item existingItem : cart.getItem()) {
                 if (existingItem.getProduct().getId().equals(productId)) {
-                    throw new RuntimeException("Produto já existe no carrinho");
+                   existingItem.setAmount(existingItem.getAmount() +1);
                 }
             }
         }
