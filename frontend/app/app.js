@@ -6,10 +6,11 @@ angular.module('myApp', [
   'myApp.view2',
   'myApp.login',
   'myApp.manege',
+  'myApp.cabecalho',
   'myApp.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.otherwise({redirectTo: '/login'});
 }]);

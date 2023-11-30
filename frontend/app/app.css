@@ -1,4 +1,7 @@
 /* app css stylesheet */
+body{
+ background-color: rgb(240, 240, 240);
+}
 
 .menu {
   background-color: rgb(20, 170, 170);
@@ -16,7 +19,7 @@
 }
 
 .ProdutoHeader{
-  margin-left: 750px;
+  margin-left: 700px;
   text-decoration: none;
   color: rgb(0, 0, 0);
   font-weight: bold;
@@ -228,3 +231,8 @@ h1 {
   top: 100px;
   right: 20px;
 }
+
+/* PAGINA DE GERENCIAMENTO DE PRODUTO */
+
+
+

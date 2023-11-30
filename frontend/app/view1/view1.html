@@ -1,11 +1,6 @@
-<div class="header">
-  <ul class="menu">
-    <li><a href="#!/view1" class="ProdutoHeader">Produtos</a></li>
-    <li><a href="#!/view2" class="CarrinhoHeader">Carrinho</a></li>
-    <li><a href="#!/manege" class="CarrinhoHeader">Gerenciador</a></li>
-  </ul>
-</div>
 <div ng-controller="View1Ctrl">
+  <cabecalho></cabecalho>
+  
     <div class="formulario" >
         <form ng-submit="adicionarNovoProduto()">
             <label for="nome">Nome:</label>
