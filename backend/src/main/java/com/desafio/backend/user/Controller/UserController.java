@@ -1,7 +1,7 @@
 package com.desafio.backend.user.Controller;
 
-import com.desafio.backend.user.Controller.Model.LoginModel;
-import com.desafio.backend.user.Controller.Model.UserInfoResponse;
+import com.desafio.backend.user.Controller.Model.LoginModelDTO;
+import com.desafio.backend.user.Controller.Model.UserInfoResponseDTO;
 import com.desafio.backend.user.Services.UserReposity;
 import com.desafio.backend.user.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class UserController {
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginModel loginModel){
+    public ResponseEntity<?> login(@RequestBody LoginModelDTO loginModel){
 
         Optional<Usuario> optionalUser = userReposity.findByEmail(loginModel.getEmail());
 
@@ -28,7 +28,7 @@ public class UserController {
 
             Usuario user = optionalUser.get();
 
-            UserInfoResponse userInfo = new UserInfoResponse();
+            UserInfoResponseDTO userInfo = new UserInfoResponseDTO();
 
             userInfo.setId(user.getId());
             userInfo.setName(user.getName());
