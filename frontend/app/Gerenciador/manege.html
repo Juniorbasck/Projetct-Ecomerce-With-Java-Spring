@@ -3,13 +3,14 @@
   <div class="container-manege" ng-repeat="produto in produtos">
     <div class="catainer-produto">
       <h3>{{ produto.name }}</h3>
+      
       <p>PREÇO: $ {{ produto.price }}</p>
 
       <md-button class="md-raised md-accent" 
-      ng-click="deleteProduct($index)" style="background-color: red;" 
+      style="background-color: red;" 
       ng-click="excluirProduto(produto.id)">Excluir</md-button>
 
-      <md-button class="md-primary md-raised" ng-click="showPrompt($event)">Editar</md-button>
+      <md-button class="md-primary md-raised" ng-click="showEditDialog($event, produto)">Editar</md-button>
     </div>
   </div>
 </div>

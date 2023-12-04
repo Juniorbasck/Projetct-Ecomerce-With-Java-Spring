@@ -16,7 +16,8 @@ angular.module('myApp.view2')
 
     $http.get('http://localhost:8080/cart/' + cartId)
         .then(function(response) {
-            $scope.carrinhoItens = response.data.item;
+            $scope.carrinhoItens = response.data.cart.item;
+            console.log('$scope.carrinhoItens:', $scope.carrinhoItens);
         })
         .catch(function(error) {
             console.error('Erro ao obter itens do carrinho', error);

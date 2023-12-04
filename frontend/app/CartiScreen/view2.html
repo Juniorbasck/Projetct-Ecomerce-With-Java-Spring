@@ -1,4 +1,7 @@
+
+
 <div class="header">
+
   <cabecalho></cabecalho>
   <div class="container">
     <h1>Meu Carrinho</h1>
@@ -7,9 +10,13 @@
         <h3>{{ item.product.name }}</h3>
         <p>R$ {{ item.product.price }}</p>
         <p>Quantidade: {{ item.amount }}</p>
+        
         <button class="amount" ng-click="diminuirQuantidade(item)">-</button>
         <button class="amount" ng-click="aumentarQuantidade(item)">+</button>
-        <button class="deleteButton" ng-click="removerDoCarrinho(item.id)">Delete</button>
+
+        <md-button class="md-raised md-accent" 
+        style="background-color: red; display: block; margin-left: 60px; font-weight: bold;"
+        ng-click="removerDoCarrinho(item.id)">Excluir</md-button>
       </div>
     </div>
 
