@@ -24,7 +24,6 @@
 
 .catainer-produto button{
     margin: 5px;
-    width: 5%;
     float: right;
     border: none;
     padding: 10px;
@@ -34,21 +33,7 @@
     padding: 12px;
 }
 
-.editar{
-    background-color: green;
-}
 
-.editar:hover{
-    background-color: rgb(9, 170, 9);
-}
-
-.excluir{
-    background-color: brown;
-}
-
-.excluir:hover{
-    background-color: rgb(243, 75, 75);
-}
 
 /*----------------------- modal  */
 

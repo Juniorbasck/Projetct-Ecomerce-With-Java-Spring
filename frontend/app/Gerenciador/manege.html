@@ -1,22 +1,15 @@
 <div>
-  <div class="header">
-    <ul class="menu">
-      <li><a href="#!/view1" class="ProdutoHeader">Produtos</a></li>
-      <li><a href="#!/view2" class="CarrinhoHeader">Carrinho</a></li>
-      <li><a href="#!/manege" class="CarrinhoHeader">Gerenciador</a></li>
-    </ul>
-  </div>
-
-  <div class="container-manege">
+  <cabecalho></cabecalho>
+  <div class="container-manege" ng-repeat="produto in produtos">
     <div class="catainer-produto">
-      <h3>TESTE</h3>
-      <p>PREÇO: 20</p>
-      <button class="excluir" ng-click="deleteProduct($index)">excluir</button>
-      <md-button class="md-primary md-raised" ng-click="showPrompt($event)"  >
-        Prompt Dialog
-      </md-button>
+      <h3>{{ produto.name }}</h3>
+      <p>PREÇO: $ {{ produto.price }}</p>
 
+      <md-button class="md-raised md-accent" 
+      ng-click="deleteProduct($index)" style="background-color: red;" 
+      ng-click="excluirProduto(produto.id)">Excluir</md-button>
+
+      <md-button class="md-primary md-raised" ng-click="showPrompt($event)">Editar</md-button>
     </div>
   </div>
-
 </div>

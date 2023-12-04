@@ -2,11 +2,11 @@
 
 angular.module('myApp', [
   'ngRoute',
+  'myApp.cabecalho',
   'myApp.view1',
   'myApp.view2',
   'myApp.login',
   'myApp.manege',
-  'myApp.cabecalho',
   'myApp.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

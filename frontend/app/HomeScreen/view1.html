@@ -1,6 +1,5 @@
 <div ng-controller="View1Ctrl">
   <cabecalho></cabecalho>
-  
     <div class="formulario" >
         <form ng-submit="adicionarNovoProduto()">
             <label for="nome">Nome:</label>
@@ -9,7 +8,7 @@
             <label for="preco">Preço:</label>
             <input type="text" id="price" ng-model="novoProduto.price" required>
         
-            <button type="submit">Adicionar Novo Produto</button>
+            <md-button type="submit" class="md-raised md-primary" style="width: 150px; height: auto; font-weight: bold;">Adicionar</md-button>
         </form>
     </div>
   
@@ -18,7 +17,6 @@
         <h3>{{ produto.name }}</h3>
         <p>R$ {{ produto.price }}</p>
         <button class="adicionar-ao-carrinho" ng-click="adicionarAoCarrinho(produto.id)">Adicionar ao Carrinho</button>
-        <button class="exluirProduto" ng-click="excluirProduto(produto.id)">Excluir</button>            
       </div>
     </div>
 

@@ -1,11 +1,13 @@
 <div class="container">
-  <form class="login-form" onsubmit="submitHandler(event)">
+  <form class="login-form" ng-submit="submitHandler($event)">
     <h1>LOGIN</h1>
-    <div class="error-message" id="error-message"></div>
-    <input type="email" placeholder="Email" id="email" required>
     
-    <input type="password" placeholder="Password" id="password" required>
+    <div class="error-message" id="error-message"></div>
+    
+    <input type="email" placeholder="Email" id="email" ng-model="email" required>
+    
+    <input type="password" placeholder="Password" id="password" ng-model="password" required>
 
-    <button type="submit">Entrar</button>
+    <button type="submit" ng-click="submitHandler($event)">Entrar</button>
   </form>
 </div>

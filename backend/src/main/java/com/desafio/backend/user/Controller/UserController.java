@@ -37,7 +37,8 @@ public class UserController {
 
             return ResponseEntity.ok(userInfo);
         }else{
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas. Login falhou.");        }
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas. Login falhou.");
+        }
     }
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")

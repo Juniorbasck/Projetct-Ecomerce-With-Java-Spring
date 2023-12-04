@@ -1,13 +1,8 @@
 <div class="header">
-  <ul class="menu">
-    <li><a href="#!/view1" class="ProdutoHeader">Produtos</a></li>
-    <li><a href="#!/view2" class="CarrinhoHeader">Carrinho</a></li>
-    <li><a href="#!/manege" class="CarrinhoHeader">Gerenciador</a></li>
-  </ul>
-</div>
-<div class="container">
-  <h1>Meu Carrinho</h1>
-  <div class="carrinho-container">
+  <cabecalho></cabecalho>
+  <div class="container">
+    <h1>Meu Carrinho</h1>
+    <div class="carrinho-container">
       <div class="produto-card" ng-repeat="item in carrinhoItens">
         <h3>{{ item.product.name }}</h3>
         <p>R$ {{ item.product.price }}</p>
