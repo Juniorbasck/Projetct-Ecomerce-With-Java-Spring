@@ -42,7 +42,6 @@ angular.module('myApp.login')
         $mdDialog.show(confirm).then(function (nameResult) {
           editedProduct.name = nameResult;
       
-          // Agora, adicione outro prompt para editar o preço
           var pricePrompt = $mdDialog.prompt()
             .title('Editar Produto')
             .textContent('Edite o preço do produto:')
@@ -56,15 +55,12 @@ angular.module('myApp.login')
           $mdDialog.show(pricePrompt).then(function (priceResult) {
             editedProduct.price = priceResult;
       
-            // Aqui você pode fazer algo com o produto editado, como enviá-lo para o servidor
             console.log('Produto editado:', editedProduct);
       
-            // Enviar os dados editados para o backend
             $http.put('http://localhost:8080/products/' + editedProduct.id, editedProduct)
               .then(function (response) {
                 console.log('Produto editado com sucesso:', response.data);
       
-                // Atualizar a lista de produtos
                 $http.get('http://localhost:8080/products')
                   .then(function (response) {
                     $scope.produtos = response.data;
@@ -95,7 +91,7 @@ angular.module('myApp.login')
 
       //---------------------------------
       
-      $scope.excluirProduto = function(id) {
+      $scope.excluirProduto = function(id, event) {
         console.log("to aqui")
         $http.delete('http://localhost:8080/products/' + id)
             .then(function(response) {
@@ -110,9 +106,20 @@ angular.module('myApp.login')
             })
             .catch(function(error) {
               console.error('Erro ao excluir produto', error);
-  
-              $scope.mensagemDoServidor = 'Erro ao excluir produto.';
-  
+              $scope.showAlert(event);
             });
        };
+
+       $scope.showAlert = function (ev) {
+        $mdDialog.show(
+            $mdDialog.alert()
+                .parent(angular.element(document.body))
+                .clickOutsideToClose(true)
+                .title('Erro ao excluir')
+                .textContent('Não foi possivel exlcuir o produto')
+                .ariaLabel('Erro!')
+                .ok('Entendi')
+                .targetEvent(ev)
+        );
+    };
 }]);

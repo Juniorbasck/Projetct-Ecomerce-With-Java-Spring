@@ -1,7 +1,4 @@
-
-
 <div class="header">
-
   <cabecalho></cabecalho>
   <div class="container">
     <h1>Meu Carrinho</h1>
@@ -15,15 +12,13 @@
         <button class="amount" ng-click="aumentarQuantidade(item)">+</button>
 
         <md-button class="md-raised md-accent" 
-        style="background-color: red; display: block; margin-left: 60px; font-weight: bold;"
+        style="background-color: red; display: block; margin-left: 90px; font-weight: bold;"
         ng-click="removerDoCarrinho(item.id)">Excluir</md-button>
       </div>
+      <h3 style="margin-left: 44%; background-color: rgb(20, 170, 170);
+       padding: 14px; border-radius: 7px; color: aliceblue;">Total: R$ {{ carrinhoTotal.totalprice }}</h3>
     </div>
 
     <button class="atualizarButton" ng-click="atualizarCarrinho()">Atualizar Carrinho</button>
-
-    <div ng-if="mensagemDoServidor" class="mensagem-flutuante">
-      {{ mensagemDoServidor }}
-    </div>
   </div>
 </div>

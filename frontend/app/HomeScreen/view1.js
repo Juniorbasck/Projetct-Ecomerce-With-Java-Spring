@@ -47,26 +47,6 @@ angular.module('myApp.view1', ['ngRoute', 'ngMaterial'])
           });
     };
 
-    $scope.excluirProduto = function(id) {
-      $http.delete('http://localhost:8080/products/' + id)
-          .then(function(response) {
-              console.log('Produto excluído com sucesso:', response.data);
-  
-              $scope.produtos = $scope.produtos.filter(function(produto) {
-                  return produto.id !== id;
-              });
-
-              $scope.mensagemDoServidor = 'Produto excluído com sucesso';
-              
-          })
-          .catch(function(error) {
-            console.error('Erro ao excluir produto', error);
-
-            $scope.mensagemDoServidor = 'Erro ao excluir produto.';
-
-          });
-     };
-   
      $scope.adicionarAoCarrinho = function(produtoId) {
       var cartId = 2;
   
