@@ -30,19 +30,24 @@ public class ItemWriteService implements ItemService {
     @Override
     public Item addItemToCart(long cartId, long productId, long amount) {
 
-        validations(cartId, productId);
+        Cart cart = FindCart(cartId);
 
         Product product = IsProductExist(productId);
 
-        Cart cart = FindCart(cartId);
+        Item existItem = FindProduct(productId, cart);
 
-        Item item = SetValues(amount, product);
+        if(existItem == null){
+            Item item = SetValues(amount, product);
 
-        this.itemRepository.save(item);
-        cart.getItem().add(item);
-        this.cartRepository.save(cart);
+            this.itemRepository.save(item);
+            cart.getItem().add(item);
+            this.cartRepository.save(cart);
 
-        return item;
+            return item;
+        }else{
+            this.itemRepository.save(existItem);
+            return existItem;
+        }
     }
 
     private static Item SetValues(long amount, Product product) {
@@ -63,19 +68,15 @@ public class ItemWriteService implements ItemService {
         return product;
     }
 
-    private void validations(long cartId, long productId) {
-        Optional<Cart> optionalCart = this.cartRepository.findById(cartId);
-        FindProduct(productId, optionalCart);
-    }
-
-    private static void FindProduct(long productId, Optional<Cart> optionalCart) {
-        if (optionalCart.isPresent()) {
-            Cart cart = optionalCart.get();
+    private static Item FindProduct(long productId, Cart cart) {
+        if (cart != null) {
             for (Item existingItem : cart.getItem()) {
                 if (existingItem.getProduct().getId().equals(productId)) {
                    existingItem.setAmount(existingItem.getAmount() +1);
+                return existingItem;
                 }
             }
         }
+    return null;
     }
 }

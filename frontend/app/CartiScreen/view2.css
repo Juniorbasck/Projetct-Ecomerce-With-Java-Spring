@@ -7,4 +7,15 @@
     background-color: rgb(53, 53, 53);
     font-weight: bold;
     color: white;
+    display: block;
+}
+
+.totalBotao{
+    display: inline-block;
+    /* border: 1px solid black; */
+    margin-left: 48%;
+    padding: 10px;
+    border-radius: 7px;
+    background-color: rgb(20, 170, 170);
+    color: white;
 }

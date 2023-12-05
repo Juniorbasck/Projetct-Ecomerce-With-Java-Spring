@@ -14,15 +14,19 @@ angular.module('myApp.view2')
     
     var cartId = 2;
 
-    $http.get('http://localhost:8080/cart/' + cartId)
-        .then(function(response) {
-            $scope.carrinhoItens = response.data.cart.item;
-            $scope.carrinhoTotal = response.data;
-            console.log('$scope.carrinhoItens:', $scope.carrinhoItens);
-        })
-        .catch(function(error) {
-            console.error('Erro ao obter itens do carrinho', error);
-        });
+    function getCartItems() {
+        $http.get('http://localhost:8080/cart/' + cartId)
+            .then(function(response) {
+                $scope.carrinhoItens = response.data.cart.item;
+                $scope.carrinhoTotal = response.data;
+                console.log('$scope.carrinhoItens:', $scope.carrinhoItens);
+            })
+            .catch(function(error) {
+                console.error('Erro ao obter itens do carrinho', error);
+            });
+    }
+
+    getCartItems(); 
 
       /*---------------*/
 
@@ -67,8 +71,8 @@ angular.module('myApp.view2')
       $http.delete('http://localhost:8080/cart/' + cartId + '/' + itemId)
           .then(function(response) {
               console.log('Produto removido do carrinho com sucesso:', response.data);
-
-              $scope.mensagemDoServidor = 'Produto excluído com sucesso, recarregue a pagina';
+              
+              getCartItems();
           })
           .catch(function(error) {
               console.error('Erro ao remover produto do carrinho', error);
