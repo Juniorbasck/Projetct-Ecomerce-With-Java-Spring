@@ -1,24 +1,28 @@
-<div class="header">
+<div>
   <cabecalho></cabecalho>
-  <div class="container">
+  <div style="padding: 60px;">
     <h1>Meu Carrinho</h1>
     <div class="carrinho-container">
       <div class="produto-card" ng-repeat="item in carrinhoItens">
         <h3>{{ item.product.name }}</h3>
         <p>R$ {{ item.product.price }}</p>
         <p>Quantidade: {{ item.amount }}</p>
+        <p>Promoção: {{ item.product.promotion }}</p>
         
         <button class="amount" ng-click="diminuirQuantidade(item)">-</button>
         <button class="amount" ng-click="aumentarQuantidade(item)">+</button>
-
-        <md-button class="md-raised md-accent" 
-        style="background-color: red; display: block; margin-left: 90px; font-weight: bold;"
-        ng-click="removerDoCarrinho(item.id)">Excluir</md-button>
+        
+        <div style="align-items: center; margin-top: 2px;">
+          <md-button class="md-raised md-accent" 
+          style="background-color: red; margin: auto; font-weight: bold; border-radius: 3px;"
+          ng-click="removerDoCarrinho(item.id)">Excluir</md-button>
+        </div>
       </div>
-      <h3 style="margin-left: 44%; background-color: rgb(20, 170, 170);
+      
+      <h3 style="margin-left: 47%; background-color: rgb(20, 170, 170);
        padding: 14px; border-radius: 7px; color: aliceblue;">Total: R$ {{ carrinhoTotal.totalprice }}</h3>
-    </div>
 
-    <button class="atualizarButton" ng-click="atualizarCarrinho()">Atualizar Carrinho</button>
+      </div>
+    <button ng-click="atualizarCarrinho()" class="atualizarButton">Atualizar Carrinho</button>
   </div>
 </div>

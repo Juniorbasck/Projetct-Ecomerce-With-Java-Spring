@@ -61,7 +61,7 @@ angular.module('myApp.view1', ['ngRoute', 'ngMaterial'])
           .then(function(response) {
               console.log('Item adicionado ao carrinho com sucesso:', response.data);
 
-              $scope.mensagemDoServidor = 'produto adcionado do carrinho';
+              // $scope.mensagemDoServidor = 'produto adcionado do carrinho';
           })
           .catch(function(error) {
               console.error('Erro ao adicionar item ao carrinho', error);

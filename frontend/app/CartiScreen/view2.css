@@ -1,0 +1,10 @@
+.atualizarButton{
+    margin-top: 10px;
+    margin-left: 46%;
+    padding: 15px;
+    border-radius: 9px;
+    border: none;
+    background-color: rgb(53, 53, 53);
+    font-weight: bold;
+    color: white;
+}

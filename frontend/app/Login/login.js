@@ -10,7 +10,7 @@ angular.module('myApp.login', ['ngRoute', 'ngMaterial'])
 }])
 
 angular.module('myApp.login')
-      .controller('LoginCtrl', ['$scope', '$http', '$location', '$mdDialog',  function($scope, $http, $location, $mdDialog) {    
+      .controller('LoginCtrl', ['$scope', '$http', '$location', '$mdDialog', '$window', function($scope, $http, $location, $mdDialog, $window,) {    
 
         $scope.submitHandler = function(event) {
           event.preventDefault();
@@ -28,6 +28,8 @@ angular.module('myApp.login')
                   // Sucesso no login
                   var user = response.data;
                   console.log('Login bem-sucedido:', user);
+                  
+                  $window.localStorage.setItem('user', JSON.stringify(user));
 
                   $location.path('/view1');  
               })
@@ -38,16 +40,5 @@ angular.module('myApp.login')
               });
       };
 
-      $scope.showAlert = function (ev) {
-        $mdDialog.show(
-            $mdDialog.alert()
-                .parent(angular.element(document.body))
-                .clickOutsideToClose(true)
-                .title('Credenciais Inválidas')
-                .textContent('A senha fornecida está incorreta. Por favor, tente novamente.')
-                .ariaLabel('Alerta de Credenciais Inválidas')
-                .ok('Entendi')
-                .targetEvent(ev)
-        );
-    };
+      
 }]);

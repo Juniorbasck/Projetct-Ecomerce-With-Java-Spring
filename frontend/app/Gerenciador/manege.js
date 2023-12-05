@@ -10,8 +10,16 @@ angular.module('myApp.manege', ['ngRoute', 'ngMaterial'])
 }])
 
 angular.module('myApp.login')
-    .controller('Manegetrl', ['$scope', '$http', '$routeParams', '$mdDialog', function($scope, $http, $routeParams, $mdDialog) {
+    .controller('Manegetrl', ['$scope', '$http', '$routeParams', '$mdDialog', '$window',  function($scope, $http, $routeParams, $mdDialog, $window) {
       
+      $scope.user = JSON.parse($window.localStorage.getItem('user'));
+
+      $scope.isAdmin = function() {
+        return $scope.user && $scope.user.isAdmin;
+      }
+
+      //------------
+
       $http.get('http://localhost:8080/products')
       .then(function(response) {
         $scope.produtos = response.data;
@@ -26,6 +34,12 @@ angular.module('myApp.login')
       $scope.customFullscreen = false;
 
       $scope.showEditDialog = function (ev, produto) {
+
+        if (!$scope.isAdmin()) {
+          $scope.showNoPermissionDialog(event);
+          return;
+        }
+
         var originalProduct = angular.copy(produto);
         var editedProduct = angular.copy(produto);
       
@@ -92,6 +106,12 @@ angular.module('myApp.login')
       //---------------------------------
       
       $scope.excluirProduto = function(id, event) {
+
+        if (!$scope.isAdmin()) {
+          $scope.showNoPermissionDialog(event);
+          return;
+        }
+
         console.log("to aqui")
         $http.delete('http://localhost:8080/products/' + id)
             .then(function(response) {
@@ -121,5 +141,18 @@ angular.module('myApp.login')
                 .ok('Entendi')
                 .targetEvent(ev)
         );
+    };
+
+    $scope.showNoPermissionDialog = function (ev) {
+      $mdDialog.show(
+          $mdDialog.alert()
+              .parent(angular.element(document.body))
+              .clickOutsideToClose(true)
+              .title('Sem permissão')
+              .textContent('Você não tem permissão para realizar esta ação.')
+              .ariaLabel('Erro!')
+              .ok('Entendi')
+              .targetEvent(ev)
+      );
     };
 }]);
