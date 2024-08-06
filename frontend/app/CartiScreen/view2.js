@@ -15,7 +15,7 @@ angular.module('myApp.view2')
     var cartId = 2;
 
     function getCartItems() {
-        $http.get('http://localhost:8080/cart/' + cartId)
+        $http.get('http://44.223.70.8:8080/cart/' + cartId)
             .then(function(response) {
                 $scope.carrinhoItens = response.data.cart.item;
                 $scope.carrinhoTotal = response.data;
@@ -54,7 +54,7 @@ angular.module('myApp.view2')
             }
         });
         
-        $http.put('http://localhost:8080/cart/' + cartId, itemsToUpdate)
+        $http.put('http://44.223.70.8:8080/cart/' + cartId, itemsToUpdate)
         .then(function(response) {
             console.log('Carrinho atualizado com sucesso:', response.data);
         })
@@ -68,7 +68,7 @@ angular.module('myApp.view2')
     $scope.removerDoCarrinho = function(itemId) {
       var cartId = 2
 
-      $http.delete('http://localhost:8080/cart/' + cartId + '/' + itemId)
+      $http.delete('http://44.223.70.8:8080/cart/' + cartId + '/' + itemId)
           .then(function(response) {
               console.log('Produto removido do carrinho com sucesso:', response.data);
               

@@ -20,7 +20,7 @@ angular.module('myApp.login')
 
       //------------
 
-      $http.get('http://localhost:8080/products')
+      $http.get('http://44.223.70.8:8080/products')
       .then(function(response) {
         $scope.produtos = response.data;
       })
@@ -71,11 +71,11 @@ angular.module('myApp.login')
       
             console.log('Produto editado:', editedProduct);
       
-            $http.put('http://localhost:8080/products/' + editedProduct.id, editedProduct)
+            $http.put('http://44.223.70.8:8080/products/' + editedProduct.id, editedProduct)
               .then(function (response) {
                 console.log('Produto editado com sucesso:', response.data);
       
-                $http.get('http://localhost:8080/products')
+                $http.get('http://44.223.70.8:8080/products')
                   .then(function (response) {
                     $scope.produtos = response.data;
                   })
@@ -113,7 +113,7 @@ angular.module('myApp.login')
         }
 
         console.log("to aqui")
-        $http.delete('http://localhost:8080/products/' + id)
+        $http.delete('http://44.223.70.8:8080/products/' + id)
             .then(function(response) {
                 console.log('Produto excluído com sucesso:', response.data);
     
