@@ -11,7 +11,7 @@ angular.module('myApp.view1', ['ngRoute', 'ngMaterial'])
 
 .controller('View1Ctrl', ['$scope', '$http', function($scope, $http) {
 
-  $http.get('http://localhost:8080/products')
+  $http.get('http://44.223.70.8:8080/products')
     .then(function(response) {
       $scope.produtos = response.data;
     })
@@ -30,14 +30,14 @@ angular.module('myApp.view1', ['ngRoute', 'ngMaterial'])
           price: precoNumero
       };
   
-      $http.post('http://localhost:8080/products', novoProduto)
+      $http.post('http://44.223.70.8:8080/products', novoProduto)
           .then(function(response) {
               console.log('Novo produto adicionado com sucesso:', response.data);
   
               $scope.novoProduto = {};
               $scope.mensagemSucesso = 'Novo produto adicionado com sucesso!';
   
-              return $http.get('http://localhost:8080/products');
+              return $http.get('http://44.223.70.8:8080/products');
           })
           .then(function(response) {
               $scope.produtos = response.data;
@@ -57,7 +57,7 @@ angular.module('myApp.view1', ['ngRoute', 'ngMaterial'])
   
       console.log(cartId, itemRequest.productId, itemRequest.amount);
   
-      $http.post('http://localhost:8080/items/' + cartId, itemRequest)
+      $http.post('http://44.223.70.8:8080/items/' + cartId, itemRequest)
           .then(function(response) {
               console.log('Item adicionado ao carrinho com sucesso:', response.data);
 
