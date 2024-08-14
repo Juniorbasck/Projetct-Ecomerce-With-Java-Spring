@@ -18,9 +18,24 @@ public class UserController {
     @Autowired
     private UserReposity userReposity;
 
+    private void createDefaultUserIfNotExists() {
+        Optional<Usuario> defaultUser = userReposity.findByEmail("admin@example.com");
+        if (!defaultUser.isPresent()) {
+            Usuario admin = new Usuario();
+            admin.setName("admin");
+            admin.setEmail("admin@example.com");
+            admin.setPassword("123");
+            admin.setIsAdmin(true);
+            userReposity.save(admin);
+        }
+    }
+
+
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginModelDTO loginModel){
+
+        createDefaultUserIfNotExists();
 
         Optional<Usuario> optionalUser = userReposity.findByEmail(loginModel.getEmail());
 
@@ -46,4 +61,5 @@ public class UserController {
     public Usuario CreateUse(@RequestBody Usuario usuario){
         return userReposity.save(usuario);
     }
+
 }

@@ -23,7 +23,7 @@ angular.module('myApp.login')
               password: password
           };
 
-          $http.post('http://junior-trabalho.myftp.org:8080/users/login', data)
+          $http.post('http://localhost:8080/users/login', data)
               .then(function(response) {
                   // Sucesso no login
                   var user = response.data;
